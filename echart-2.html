@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.1/dist/echarts.js"></script>
+    <style>
+      #chart {
+        width: 800px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+      const chartDom = document.getElementById("chart")
+      const chart = echarts.init(chartDom)
+
+      chart.setOption({
+        dataset: {
+          source: [
+            ["一季度", 100, 79, "分类1", 50],
+            ["二季度", 112, 81, "分类2", 60],
+            ["三季度", 96, 88, "分类3", 55],
+            ["四季度", 123, 72, "分类4", 70],
+          ],
+        },
+        title: {
+          text: "多系列案例",
+          subtext: "数据可视化",
+        },
+        xAxis: {
+          data: ["一季度", "二季度", "三季度", "四季度"],
+        },
+        yAxis: {},
+        legend: {
+          data: [
+            { name: "分类", icon: "circle", textStyle: { color: "red" } },
+            "折线图",
+            "柱状图",
+          ],
+          left: 300,
+        },
+        toolbox: {
+          feature: {
+            dataZoom: {
+              yAxisIndex: false,
+            },
+            restore: {},
+            saveAsImage: {},
+          },
+        },
+        dataZoom: [
+          {
+            show: true,
+            start: 0,
+            end: 100,
+          },
+        ],
+        grid: {
+          top: 100,
+          left: "10%",
+          right: "10%",
+          bottom: 100,
+        },
+        series: [
+          {
+            name: "分类",
+            type: "pie",
+            center: ["65%", 60],
+            radius: 35,
+            encode: { itemName: 3, value: 4 },
+          },
+          {
+            name: "折线图",
+            type: "line",
+            encode: { x: 0, y: 1 },
+          },
+          {
+            name: "柱状图",
+            type: "bar",
+            encode: { x: 0, y: 2 },
+          },
+        ],
+      })
+    </script>
+
+    <script>
+      // const chartDom = document.getElementById("chart")
+      // const chart = echarts.init(chartDom)
+
+      // chart.setOption({
+      //   title: {
+      //     text: "多系列案例",
+      //   },
+      //   xAxis: {
+      //     data: ["一季度", "二季度", "三季度", "四季度"],
+      //   },
+      //   yAxis: {},
+      //   series: [
+      //     {
+      //       type: "pie",
+      //       center: ["65%", 60],
+      //       radius: 35,
+      //       data: [
+      //         {
+      //           name: "分类1",
+      //           value: 50,
+      //         },
+      //         {
+      //           name: "分类2",
+      //           value: 80,
+      //         },
+      //         {
+      //           name: "分类3",
+      //           value: 100,
+      //         },
+      //         {
+      //           name: "分类4",
+      //           value: 60,
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       type: "line",
+      //       data: [55, 66, 88, 77],
+      //     },
+      //     {
+      //       type: "bar",
+      //       data: [10, 12, 19, 25],
+      //     },
+      //   ],
+      // })
+    </script>
+  </body>
+</html>
